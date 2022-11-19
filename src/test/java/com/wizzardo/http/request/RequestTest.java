@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -328,7 +329,7 @@ public class RequestTest extends ServerTest {
     public void testRange() throws IOException {
         byte[] data = new byte[1000];
         new Random().nextBytes(data);
-        final File file = File.createTempFile("test_range", null);
+        final File file = Files.createTempFile("test_range", null).toFile();
         file.deleteOnExit();
         FileTools.bytes(file, data);
 

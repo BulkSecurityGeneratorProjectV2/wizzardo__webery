@@ -3,6 +3,7 @@ package com.wizzardo.http.request;
 import com.wizzardo.tools.io.FileTools;
 
 import java.io.*;
+import java.nio.file.Files;
 
 /**
  * @author: wizzardo
@@ -16,7 +17,7 @@ public class MultiPartFileEntry extends MultiPartEntry {
     public MultiPartFileEntry(String name, String filename) throws IOException {
         super(name);
         this.filename = filename;
-        file = File.createTempFile("--MultiPartEntry", "--");
+        file = Files.createTempFile("--MultiPartEntry", "--").toFile();
     }
 
     @Override
